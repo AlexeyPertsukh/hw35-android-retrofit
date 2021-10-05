@@ -35,6 +35,8 @@ https://jsonplaceholder.typicode.com/users
 public class MainActivity extends AppCompatActivity implements ISendToFragment, IConst, IToast, ILog {
 
     private static final boolean USER_INFO_INVISIBLE = false;
+    private static final boolean SHOW_MESSAGE_BY_RELOAD = true;
+    private static final boolean NOT_SHOW_MESSAGE_BY_RELOAD = false;
     private Api api;
 
     private UserFragment userFragment;
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
         state = getState(userInfoIsVisible);
 
         if(users == null) {
-            readUsersFromNet();
+            readUsersFromNet(NOT_SHOW_MESSAGE_BY_RELOAD);
         }
     }
 
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.menu_read_from_server) {
-            readUsersFromNet();
+            readUsersFromNet(SHOW_MESSAGE_BY_RELOAD);
         } else if(id == R.id.menu_git) {
             Intent Browse = new Intent(Intent.ACTION_VIEW, Uri.parse(GIT));
             startActivity(Browse);
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
     }
 
     private boolean usersReading;
-    private void readUsersFromNet() {
+    private void readUsersFromNet(boolean showMessageByReload) {
         if(usersReading) {
             return;
         }
@@ -104,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                 if(!users.isEmpty()) {
                     userFragment.updateUsers(users);
                     state = getState(USER_INFO_INVISIBLE);
+                    if(showMessageByReload) {
+                        shortToast(getApplicationContext(), "User data is reloaded");
+                    }
                     usersReading = false;
                 }
             }
