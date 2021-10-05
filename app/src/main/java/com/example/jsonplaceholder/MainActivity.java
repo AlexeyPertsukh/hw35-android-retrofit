@@ -2,13 +2,20 @@ package com.example.jsonplaceholder;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_layout);
+        setContentView(R.layout.main_activity);
 
         boolean userInfoIsVisible = false;
 
@@ -63,7 +70,30 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.menu_read_from_server) {
+            readUsersFromNet();
+        } else if(id == R.id.menu_git) {
+            Intent Browse = new Intent(Intent.ACTION_VIEW, Uri.parse(GIT));
+            startActivity(Browse);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private boolean usersReading;
     private void readUsersFromNet() {
+        if(usersReading) {
+            return;
+        }
+        usersReading = true;
         api.getAllUsers().enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
@@ -71,12 +101,14 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                 users = new ArrayList<>(response.body());
                 if(!users.isEmpty()) {
                     userFragment.updateUsers(users);
+                    usersReading = false;
                 }
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
                 longToast(getApplicationContext(), "Failed read data from \n" + BASE_URL);
+                usersReading = false;
             }
         });
     }

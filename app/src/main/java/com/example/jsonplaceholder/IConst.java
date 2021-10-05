@@ -8,4 +8,6 @@ public interface IConst {
     String KEY_USER_INFO_IS_VISIBLE = "key_user_info_is_visible";
     String KEY_RESOURCE_ID = "key_resource_id";
     String KEY_USER_INFO_CONFIG = "key_user_info_config";
+
+    String GIT = "https://github.com/AlexeyPertsukh/hw35-android-retrofit";
 }
