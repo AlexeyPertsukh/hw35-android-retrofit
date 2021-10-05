@@ -20,7 +20,7 @@ public class Address implements Serializable {
     }
 
     private Address() {
-        this("","","","", new Geo(0,0));
+        this("","","","", Geo.getInstanceNullObject());
     }
 
     public static Address getInstanceNullObject() {
@@ -63,18 +63,30 @@ public class Address implements Serializable {
         return geo.getGeoString();
     }
 
+    //Geo
     private static class Geo implements Serializable {
         private final double lat;
         private final double lng;
+        private boolean isNull;
 
         public Geo(double lat, double lng) {
             this.lat = lat;
             this.lng = lng;
         }
 
+        public static Geo getInstanceNullObject() {
+            Geo geo = new Geo(0,0);
+            geo.isNull = true;
+            return geo;
+        }
+
         @SuppressLint("DefaultLocale")
         public String getGeoString() {
-            return String.format("%f : %f", lat, lng);
+            if(isNull) {
+                return "";
+            } else {
+                return String.format("%f : %f", lat, lng);
+            }
         }
 
         public double getLat() {

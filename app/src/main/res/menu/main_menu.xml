@@ -5,7 +5,7 @@
         android:id="@+id/menu_read_from_server"
         android:icon="@drawable/download_64"
         android:orderInCategory="1"
-        android:title="Reload user data"
+        android:title="Load user data"
         app:showAsAction="ifRoom"
         />
 

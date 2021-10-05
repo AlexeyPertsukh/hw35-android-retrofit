@@ -35,8 +35,8 @@ https://jsonplaceholder.typicode.com/users
 public class MainActivity extends AppCompatActivity implements ISendToFragment, IConst, IToast, ILog {
 
     private static final boolean USER_INFO_INVISIBLE = false;
-    private static final boolean SHOW_MESSAGE_BY_RELOAD = true;
-    private static final boolean NOT_SHOW_MESSAGE_BY_RELOAD = false;
+    private static final boolean SHOW_MESSAGE_BY_LOAD_USERS = true;
+    private static final boolean NOT_SHOW_MESSAGE_BY_LOAD_USERS = false;
     private Api api;
 
     private UserFragment userFragment;
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
         state = getState(userInfoIsVisible);
 
         if(users == null) {
-            readUsersFromNet(NOT_SHOW_MESSAGE_BY_RELOAD);
+            readUsersFromNet(NOT_SHOW_MESSAGE_BY_LOAD_USERS);
         }
     }
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.menu_read_from_server) {
-            readUsersFromNet(SHOW_MESSAGE_BY_RELOAD);
+            readUsersFromNet(SHOW_MESSAGE_BY_LOAD_USERS);
         } else if(id == R.id.menu_git) {
             Intent Browse = new Intent(Intent.ACTION_VIEW, Uri.parse(GIT));
             startActivity(Browse);
@@ -104,13 +104,14 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                 printLog("MainActivity - readUsersFromNet");
                 users = new ArrayList<>(response.body());
                 if(!users.isEmpty()) {
+                    users.addAll(Util.getTestUsers());
                     userFragment.updateUsers(users);
                     state = getState(USER_INFO_INVISIBLE);
                     if(showMessageByReload) {
-                        shortToast(getApplicationContext(), "User data is reloaded");
+                        shortToast(getApplicationContext(), "User data is loaded");
                     }
-                    usersReading = false;
                 }
+                usersReading = false;
             }
 
             @Override
@@ -158,12 +159,10 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
         }
     }
 
-
     private void initViews() {
         fcUsers = findViewById(R.id.fcUsers);
         fcUserInfo = findViewById(R.id.fcUserInfo);
     }
-
 
     @Override
     public void setUserInfo(User user, int resId) {
@@ -206,7 +205,6 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                         dialog.dismiss();
                     }
                 });
-
 
         alertDialog.setContentView(R.layout.support_simple_spinner_dropdown_item);
         alertDialog.show();
@@ -257,8 +255,6 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
             fcUserInfo.setVisibility(View.VISIBLE);
             userInfoFragment.setInfo(user, resId);
         }
-
-
     }
 
     class StateHorizontal extends State {
@@ -272,8 +268,6 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
             fcUserInfo.setVisibility(View.VISIBLE);
             userInfoFragment.setInfo(user, resId);
         }
-
-
     }
 
 }

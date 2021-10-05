@@ -39,9 +39,6 @@ public class User implements Serializable {
     private Company company;
 
 
-    public User() {
-    }
-
     public User(long id, String name, String username, String email, String phone, String website, Address address, Company company) {
         this.id = id;
         this.name = name;
