@@ -33,6 +33,8 @@ https://jsonplaceholder.typicode.com/users
  */
 
 public class MainActivity extends AppCompatActivity implements ISendToFragment, IConst, IToast, ILog {
+
+    private static final boolean USER_INFO_INVISIBLE = false;
     private Api api;
 
     private UserFragment userFragment;
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                 users = new ArrayList<>(response.body());
                 if(!users.isEmpty()) {
                     userFragment.updateUsers(users);
+                    state = getState(USER_INFO_INVISIBLE);
                     usersReading = false;
                 }
             }
