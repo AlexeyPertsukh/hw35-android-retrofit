@@ -55,23 +55,23 @@ public class User implements Serializable {
     }
 
     public String getName() {
-        return getValueOrEmptyStringIfNull(name);
+        return Util.getValueOrEmptyStringIfNull(name);
     }
 
     public String getUsername() {
-        return getValueOrEmptyStringIfNull(username);
+        return Util.getValueOrEmptyStringIfNull(username);
     }
 
     public String getEmail() {
-        return getValueOrEmptyStringIfNull(email);
+        return Util.getValueOrEmptyStringIfNull(email);
     }
 
     public String getPhone() {
-        return getValueOrEmptyStringIfNull(phone);
+        return Util.getValueOrEmptyStringIfNull(phone);
     }
 
     public String getWebsite() {
-        return getValueOrEmptyStringIfNull(website);
+        return Util.getValueOrEmptyStringIfNull(website);
     }
 
     public Address getAddress() {
@@ -90,12 +90,5 @@ public class User implements Serializable {
         }
     }
 
-    private static String getValueOrEmptyStringIfNull(String value) {
-        if(value == null) {
-            return "";
-        } else {
-            return value;
-        }
-    }
 }
 

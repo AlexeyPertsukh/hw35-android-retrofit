@@ -10,4 +10,6 @@ public interface IConst {
     String KEY_USER_INFO_CONFIG = "key_user_info_config";
 
     String GIT = "https://github.com/AlexeyPertsukh/hw35-android-retrofit";
+    String MESSAGE_DATA_LOADED = "User data loaded";
+    String MESSAGE_LOAD_FAILED = "Failed read data from";
 }

@@ -20,7 +20,7 @@ public class Address implements Serializable {
     }
 
     private Address() {
-        this("","","","", Geo.getInstanceNullObject());
+        this.geo = Geo.getInstanceNullObject();
     }
 
     public static Address getInstanceNullObject() {
@@ -28,35 +28,19 @@ public class Address implements Serializable {
     }
 
     public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
+        return Util.getValueOrEmptyStringIfNull(street);
     }
 
     public String getSuite() {
-        return suite;
-    }
-
-    public void setSuite(String suite) {
-        this.suite = suite;
+        return Util.getValueOrEmptyStringIfNull(suite);
     }
 
     public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+        return Util.getValueOrEmptyStringIfNull(city);
     }
 
     public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+        return Util.getValueOrEmptyStringIfNull(zipcode);
     }
 
     public String getGeoString() {
@@ -65,9 +49,12 @@ public class Address implements Serializable {
 
     //Geo
     private static class Geo implements Serializable {
-        private final double lat;
-        private final double lng;
+        private double lat;
+        private double lng;
         private boolean isNull;
+
+        private Geo() {
+        }
 
         public Geo(double lat, double lng) {
             this.lat = lat;
@@ -75,7 +62,7 @@ public class Address implements Serializable {
         }
 
         public static Geo getInstanceNullObject() {
-            Geo geo = new Geo(0,0);
+            Geo geo = new Geo();
             geo.isNull = true;
             return geo;
         }

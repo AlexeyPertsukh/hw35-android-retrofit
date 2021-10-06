@@ -3,6 +3,7 @@ package com.example.jsonplaceholder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
     private static final boolean USER_INFO_INVISIBLE = false;
     private static final boolean SHOW_MESSAGE_BY_LOAD_USERS = true;
     private static final boolean NOT_SHOW_MESSAGE_BY_LOAD_USERS = false;
+
     private Api api;
 
     private UserFragment userFragment;
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
     private ArrayList<User> users;
 
     private State state;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                     userFragment.updateUsers(users);
                     state = getState(USER_INFO_INVISIBLE);
                     if(showMessageByReload) {
-                        shortToast(getApplicationContext(), "User data is loaded");
+                        shortToast(getApplicationContext(), MESSAGE_DATA_LOADED);
                     }
                 }
                 usersReading = false;
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
-                longToast(getApplicationContext(), "Failed read data from \n" + BASE_URL);
+                longToast(getApplicationContext(), MESSAGE_LOAD_FAILED + " \n" + BASE_URL);
                 usersReading = false;
             }
         });

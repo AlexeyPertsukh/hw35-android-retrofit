@@ -7,31 +7,29 @@ public class Company implements Serializable {
     private String catchPhrase;
     private String bs;
 
+    private Company() {
+    }
+
     public Company(String name, String catchPhrase, String bs) {
         this.name = name;
         this.catchPhrase = catchPhrase;
         this.bs = bs;
     }
 
-    private Company() {
-        this("","","");
-    }
-
     public static Company getInstanceNullObject() {
         return new Company();
     }
 
-
     public String getName() {
-        return name;
+        return Util.getValueOrEmptyStringIfNull(name);
     }
 
     public String getCatchPhrase() {
-        return catchPhrase;
+        return Util.getValueOrEmptyStringIfNull(catchPhrase);
     }
 
     public String getBs() {
-        return bs;
+        return Util.getValueOrEmptyStringIfNull(bs);
     }
 }
 
