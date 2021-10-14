@@ -2,7 +2,7 @@ package com.example.jsonplaceholder;
 
 import java.io.Serializable;
 
-public class Company implements Serializable {
+public class Company implements Serializable, INullable {
     private String name;
     private String catchPhrase;
     private String bs;
@@ -21,15 +21,16 @@ public class Company implements Serializable {
     }
 
     public String getName() {
-        return Util.getValueOrEmptyStringIfNull(name);
+        return getValueOrEmptyStringIfNull(name);
     }
 
     public String getCatchPhrase() {
-        return Util.getValueOrEmptyStringIfNull(catchPhrase);
+        return getValueOrEmptyStringIfNull(catchPhrase);
     }
 
     public String getBs() {
-        return Util.getValueOrEmptyStringIfNull(bs);
+        return getValueOrEmptyStringIfNull(bs);
     }
+
 }
 

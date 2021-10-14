@@ -23,12 +23,4 @@ public class Util {
         return users;
     }
 
-    private static final String EMPTY_STRING = "";
-
-    public static String getValueOrEmptyStringIfNull(String value) {
-        return (value == null) ? EMPTY_STRING : value;
-
-//        Optional<String> optional = Optional.ofNullable(value);   //не работает в старых api
-//        return optional.orElse("");
-    }
 }

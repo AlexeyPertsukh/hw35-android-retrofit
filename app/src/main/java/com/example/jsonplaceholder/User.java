@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User implements Serializable, INullable {
     @SerializedName("id")
     @Expose
     private long id;
@@ -38,6 +38,10 @@ public class User implements Serializable {
     @Expose
     private Company company;
 
+//    public User() {
+//        this.address = Address.getInstanceNullObject();
+//        this.company = Company.getInstanceNullObject();
+//    }
 
     public User(long id, String name, String username, String email, String phone, String website, Address address, Company company) {
         this.id = id;
@@ -55,23 +59,23 @@ public class User implements Serializable {
     }
 
     public String getName() {
-        return Util.getValueOrEmptyStringIfNull(name);
+        return getValueOrEmptyStringIfNull(name);
     }
 
     public String getUsername() {
-        return Util.getValueOrEmptyStringIfNull(username);
+        return getValueOrEmptyStringIfNull(username);
     }
 
     public String getEmail() {
-        return Util.getValueOrEmptyStringIfNull(email);
+        return getValueOrEmptyStringIfNull(email);
     }
 
     public String getPhone() {
-        return Util.getValueOrEmptyStringIfNull(phone);
+        return getValueOrEmptyStringIfNull(phone);
     }
 
     public String getWebsite() {
-        return Util.getValueOrEmptyStringIfNull(website);
+        return getValueOrEmptyStringIfNull(website);
     }
 
     public Address getAddress() {

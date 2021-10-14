@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 
 import java.io.Serializable;
 
-public class Address implements Serializable {
+public class Address implements Serializable, INullable {
     private String street;
     private String suite;
     private String city;
@@ -28,24 +28,25 @@ public class Address implements Serializable {
     }
 
     public String getStreet() {
-        return Util.getValueOrEmptyStringIfNull(street);
+        return getValueOrEmptyStringIfNull(street);
     }
 
     public String getSuite() {
-        return Util.getValueOrEmptyStringIfNull(suite);
+        return getValueOrEmptyStringIfNull(suite);
     }
 
     public String getCity() {
-        return Util.getValueOrEmptyStringIfNull(city);
+        return getValueOrEmptyStringIfNull(city);
     }
 
     public String getZipcode() {
-        return Util.getValueOrEmptyStringIfNull(zipcode);
+        return getValueOrEmptyStringIfNull(zipcode);
     }
 
     public String getGeoString() {
         return geo.getGeoString();
     }
+
 
     //Geo
     private static class Geo implements Serializable {
