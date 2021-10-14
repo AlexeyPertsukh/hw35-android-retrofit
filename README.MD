@@ -16,6 +16,6 @@ Lesson theme:
 
 ![alt text](Screenshot_03.jpg)
 
-![ALT test](Screenshot_03.jpg?cropZoom=100,100))
+![ALT test](Screenshot_03.jpg?cropZoom=50,50))
 
 [19.09.21]
