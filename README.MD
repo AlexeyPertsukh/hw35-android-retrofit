@@ -1,11 +1,9 @@
 Client for reading users data from 
-
 https://jsonplaceholder.typicode.com/users
 
 ----
 
 Lesson theme:
-
 - Retrofit
 
 ![alt text](Screenshot_00.jpg)
