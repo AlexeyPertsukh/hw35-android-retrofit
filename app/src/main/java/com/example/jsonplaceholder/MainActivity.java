@@ -1,7 +1,6 @@
 package com.example.jsonplaceholder;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -109,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
         usersReading = true;
         api.getAllUsers().enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(@NotNull Call<List<User>> call, @NotNull Response<List<User>> response) {
                 printLog("MainActivity - readUsersFromNet");
                 users = new ArrayList<>(response.body());
                 if(!users.isEmpty()) {
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<User>> call, @NotNull Throwable t) {
                 longToast(getApplicationContext(), MESSAGE_LOAD_FAILED + " \n" + BASE_URL);
                 usersReading = false;
             }
@@ -185,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
 
     //сохранение
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(KEY_USERS, users);
         boolean vis = fcUserInfo.getVisibility() == View.VISIBLE;
@@ -202,18 +201,10 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
         alertDialog.setTitle("Выход из программы");
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
+                (dialog, which) -> finish());
 
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "CANCEL",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                (dialog, which) -> dialog.dismiss());
 
         alertDialog.setContentView(R.layout.support_simple_spinner_dropdown_item);
         alertDialog.show();
