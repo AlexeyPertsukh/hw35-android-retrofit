@@ -1,8 +1,8 @@
-package com.example.jsonplaceholder.utils;
+package utils;
 
 import java.util.ArrayList;
 
-import com.example.jsonplaceholder.jsonplaceholder_class.User;
+import jsonplaceholder_class.User;
 
 public class LocalUserStorage {
     private LocalUserStorage() {

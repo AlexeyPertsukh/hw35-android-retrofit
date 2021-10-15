@@ -1,4 +1,4 @@
-package com.example.jsonplaceholder.jsonplaceholder_class;
+package jsonplaceholder_class;
 
 public interface INull {
     String EMPTY_STRING = "";

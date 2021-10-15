@@ -1,6 +1,6 @@
-package com.example.jsonplaceholder.network;
+package network;
 
-import com.example.jsonplaceholder.utils.IConst;
+import utils.IConst;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

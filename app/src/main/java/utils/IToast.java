@@ -1,4 +1,4 @@
-package com.example.jsonplaceholder.utils;
+package utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

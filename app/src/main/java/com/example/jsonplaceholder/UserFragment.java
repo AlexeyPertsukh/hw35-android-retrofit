@@ -19,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.example.jsonplaceholder.jsonplaceholder_class.User;
-import com.example.jsonplaceholder.utils.IConst;
-import com.example.jsonplaceholder.utils.ILog;
+import jsonplaceholder_class.User;
+import utils.IConst;
+import utils.ILog;
 
 public class UserFragment extends Fragment implements Serializable, IConst, ILog {
 
