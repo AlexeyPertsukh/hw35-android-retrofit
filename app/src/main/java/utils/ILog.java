@@ -1,4 +1,4 @@
-package com.example.jsonplaceholder;
+package utils;
 
 import android.util.Log;
 

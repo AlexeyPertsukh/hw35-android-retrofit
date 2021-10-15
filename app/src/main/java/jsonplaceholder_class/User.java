@@ -1,47 +1,42 @@
-package com.example.jsonplaceholder;
+package jsonplaceholder_class;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class User implements Serializable, INullable {
+public class User implements Serializable, INull {
     @SerializedName("id")
     @Expose
-    private long id;
+    private final long id;
 
     @SerializedName("name")
     @Expose
-    private String name;
+    private final String name;
 
     @SerializedName("username")
     @Expose
-    private String username;
+    private final String username;
 
     @SerializedName("email")
     @Expose
-    private String email;
+    private final String email;
 
     @SerializedName("phone")
     @Expose
-    private String phone;
+    private final String phone;
 
     @SerializedName("website")
     @Expose
-    private String website;
+    private final String website;
 
     @SerializedName("address")
     @Expose
-    private Address address;
+    private final Address address;
 
     @SerializedName("company")
     @Expose
-    private Company company;
-
-//    public User() {
-//        this.address = Address.getInstanceNullObject();
-//        this.company = Company.getInstanceNullObject();
-//    }
+    private final Company company;
 
     public User(long id, String name, String username, String email, String phone, String website, Address address, Company company) {
         this.id = id;
@@ -79,20 +74,24 @@ public class User implements Serializable, INullable {
     }
 
     public Address getAddress() {
-        if(address != null) {
-            return address;
+        if (address == null) {
+            return Address.getInstanceNull();
         } else {
-            return Address.getInstanceNullObject();
+            return address;
         }
     }
 
     public Company getCompany() {
-        if(company != null) {
-            return company;
+        if(company == null) {
+            return Company.getInstanceNull();
         } else {
-            return Company.getInstanceNullObject();
+            return company;
         }
     }
 
+    @Override
+    public boolean isNull() {
+        return false;
+    }
 }
 

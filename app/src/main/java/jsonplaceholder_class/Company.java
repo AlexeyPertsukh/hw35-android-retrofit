@@ -1,23 +1,24 @@
-package com.example.jsonplaceholder;
+package jsonplaceholder_class;
 
 import java.io.Serializable;
 
-public class Company implements Serializable, INullable {
+public class Company implements Serializable, INull {
     private String name;
     private String catchPhrase;
     private String bs;
 
-    private Company() {
+    protected Company() {
     }
 
+    @SuppressWarnings("unused")
     public Company(String name, String catchPhrase, String bs) {
         this.name = name;
         this.catchPhrase = catchPhrase;
         this.bs = bs;
     }
 
-    public static Company getInstanceNullObject() {
-        return new Company();
+    public static Company getInstanceNull() {
+        return CompanyNull.getInstance();
     }
 
     public String getName() {
@@ -32,5 +33,9 @@ public class Company implements Serializable, INullable {
         return getValueOrEmptyStringIfNull(bs);
     }
 
+    @Override
+    public boolean isNull() {
+        return false;
+    }
 }
 

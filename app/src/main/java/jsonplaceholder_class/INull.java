@@ -1,7 +1,9 @@
-package com.example.jsonplaceholder;
+package jsonplaceholder_class;
 
-public interface INullable {
+public interface INull {
     String EMPTY_STRING = "";
+
+    boolean isNull();
 
     default String getValueOrEmptyStringIfNull(String value) {
         return (value == null) ? EMPTY_STRING : value;
@@ -9,4 +11,6 @@ public interface INullable {
 //        Optional<String> optional = Optional.ofNullable(value);   //не работает в старых api
 //        return optional.orElse("");
     }
+
+
 }

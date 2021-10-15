@@ -12,6 +12,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import jsonplaceholder_class.User;
+
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     private final ArrayList<User> users;

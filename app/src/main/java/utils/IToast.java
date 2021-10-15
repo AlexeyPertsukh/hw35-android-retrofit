@@ -1,4 +1,4 @@
-package com.example.jsonplaceholder;
+package utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.jsonplaceholder.R;
 
 public interface IToast {
 

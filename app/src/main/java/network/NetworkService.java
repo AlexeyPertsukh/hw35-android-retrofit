@@ -1,11 +1,13 @@
-package com.example.jsonplaceholder;
+package network;
+
+import utils.IConst;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class NetworkService implements IConst{
+public class NetworkService implements IConst {
     private static NetworkService networkService;
-    private Retrofit retrofit;
+    private final Retrofit retrofit;
 
     private NetworkService() {
         retrofit = new Retrofit.Builder()

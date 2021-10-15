@@ -1,10 +1,11 @@
-package com.example.jsonplaceholder;
+package utils;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
-public class Util {
-    private Util() {
+import jsonplaceholder_class.User;
+
+public class LocalUserStorage {
+    private LocalUserStorage() {
     }
 
     //юзеры с частичным заполнением инфо для тестирования вывода на gui
@@ -20,6 +21,7 @@ public class Util {
                 "mytest2_empty",null,
                 null,null,
                 null, null));
+
         return users;
     }
 

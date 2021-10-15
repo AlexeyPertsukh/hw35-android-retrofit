@@ -3,7 +3,6 @@ package com.example.jsonplaceholder;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,7 +12,6 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 
@@ -22,9 +20,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import jsonplaceholder_class.User;
+import network.Api;
+import network.NetworkService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import utils.IConst;
+import utils.ILog;
+import utils.IToast;
+import utils.LocalUserStorage;
 
 /*
 https://jsonplaceholder.typicode.com/users
@@ -108,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
                 printLog("MainActivity - readUsersFromNet");
                 users = new ArrayList<>(response.body());
                 if(!users.isEmpty()) {
-                    users.addAll(Util.getTestUsers());
+                    users.addAll(LocalUserStorage.getTestUsers());
                     userFragment.updateUsers(users);
                     state = getState(USER_INFO_INVISIBLE);
                     if(showMessageByReload) {

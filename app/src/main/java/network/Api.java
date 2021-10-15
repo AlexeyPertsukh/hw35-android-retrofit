@@ -1,10 +1,10 @@
-package com.example.jsonplaceholder;
+package network;
 
 import java.util.List;
 
+import jsonplaceholder_class.User;
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 public interface Api {
     @GET("/users")

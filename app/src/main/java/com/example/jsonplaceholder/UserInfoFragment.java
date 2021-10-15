@@ -18,8 +18,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 
+import jsonplaceholder_class.User;
+import utils.IConst;
+import utils.ILog;
+import utils.IToast;
 
-public class UserInfoFragment extends Fragment implements Serializable, IConst, ILog, IToast{
+
+public class UserInfoFragment extends Fragment implements Serializable, IConst, ILog, IToast {
     private static final boolean STATE_VISIBLE = true;
     private static final boolean STATE_INVISIBLE = false;
 
