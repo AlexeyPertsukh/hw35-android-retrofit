@@ -1,4 +1,4 @@
-package jsonplaceholder_class;
+package com.example.jsonplaceholder.jsonplaceholder_class;
 
 import android.annotation.SuppressLint;
 

@@ -1,4 +1,4 @@
-package jsonplaceholder_class;
+package com.example.jsonplaceholder.jsonplaceholder_class;
 
 public class CompanyNull extends Company {
     private static CompanyNull companyNull;

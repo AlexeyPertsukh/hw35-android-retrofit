@@ -1,4 +1,4 @@
-package jsonplaceholder_class;
+package com.example.jsonplaceholder.jsonplaceholder_class;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

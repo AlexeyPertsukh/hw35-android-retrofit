@@ -1,8 +1,8 @@
-package network;
+package com.example.jsonplaceholder.network;
 
 import java.util.List;
 
-import jsonplaceholder_class.User;
+import com.example.jsonplaceholder.jsonplaceholder_class.User;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

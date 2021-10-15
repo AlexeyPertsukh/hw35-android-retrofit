@@ -1,4 +1,4 @@
-package jsonplaceholder_class;
+package com.example.jsonplaceholder.jsonplaceholder_class;
 
 public class GeoNull extends Geo implements INull {
     private static GeoNull geoNull;

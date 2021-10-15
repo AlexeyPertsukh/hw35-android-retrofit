@@ -1,4 +1,4 @@
-package utils;
+package com.example.jsonplaceholder.utils;
 
 public interface IConst {
     String BASE_URL = "https://jsonplaceholder.typicode.com";

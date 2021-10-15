@@ -20,16 +20,16 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import jsonplaceholder_class.User;
-import network.Api;
-import network.NetworkService;
+import com.example.jsonplaceholder.jsonplaceholder_class.User;
+import com.example.jsonplaceholder.network.Api;
+import com.example.jsonplaceholder.network.NetworkService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import utils.IConst;
-import utils.ILog;
-import utils.IToast;
-import utils.LocalUserStorage;
+import com.example.jsonplaceholder.utils.IConst;
+import com.example.jsonplaceholder.utils.ILog;
+import com.example.jsonplaceholder.utils.IToast;
+import com.example.jsonplaceholder.utils.LocalUserStorage;
 
 /*
 https://jsonplaceholder.typicode.com/users

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-import jsonplaceholder_class.User;
+import com.example.jsonplaceholder.jsonplaceholder_class.User;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
