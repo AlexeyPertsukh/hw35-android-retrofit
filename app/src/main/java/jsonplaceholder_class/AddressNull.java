@@ -6,7 +6,7 @@ public class AddressNull extends Address{
     private AddressNull() {
     }
 
-    public static AddressNull getInstance() {
+    protected static AddressNull getInstance() {
         if(addressNull == null) {
             addressNull = new AddressNull();
         }

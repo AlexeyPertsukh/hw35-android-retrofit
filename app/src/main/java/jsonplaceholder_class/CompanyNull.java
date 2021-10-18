@@ -6,7 +6,7 @@ public class CompanyNull extends Company {
     private CompanyNull() {
     }
 
-    public static CompanyNull getInstance() {
+    protected static CompanyNull getInstance() {
         if (companyNull == null) {
             companyNull = new CompanyNull();
         }

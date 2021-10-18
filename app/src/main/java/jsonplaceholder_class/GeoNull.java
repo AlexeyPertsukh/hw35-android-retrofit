@@ -6,7 +6,7 @@ public class GeoNull extends Geo implements INull {
     private GeoNull() {
     }
 
-    public static GeoNull getInstance() {
+    protected static GeoNull getInstance() {
         if(geoNull == null) {
             geoNull = new GeoNull();
         }
