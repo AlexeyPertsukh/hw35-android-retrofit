@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity implements ISendToFragment, 
 
     private void initUserFragment() {
         FragmentManager fm = getSupportFragmentManager();
-
         userFragment = (UserFragment) fm.findFragmentById(R.id.fcUsers);
         if(userFragment == null) {
             userFragment = new UserFragment();
